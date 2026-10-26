@@ -5,13 +5,16 @@ on:
     - cron: "*/15 * * * *"
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   check:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - run: pip install playwright==1.48.0 && python -m playwright install --with-deps chromium
@@ -19,3 +22,11 @@ jobs:
         env:
           EMAIL: ${{ secrets.EMAIL }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+      - name: Save status.txt to the status branch
+        if: always()
+        run: |
+          [ -f status.txt ] || echo "status.txt missing: script crashed before writing it" > status.txt
+          mkdir /tmp/s && cp status.txt /tmp/s/ && cd /tmp/s
+          git init -q -b status && git add status.txt
+          git -c user.name=actions -c user.email=actions@github.com commit -qm "status $(date -u +%FT%TZ)"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" status

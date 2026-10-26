@@ -1,11 +1,11 @@
 # Check how many places are left for 6 Dec 2569 (2026) every 15 minutes.
 # Runs once per call; GitHub Actions calls it every 15 minutes (.github/workflows/check.yml).
 # Needs repo secrets EMAIL and GMAIL_APP_PASSWORD (https://myaccount.google.com/apppasswords).
-import os, re, datetime, smtplib
+import os, re, datetime, smtplib, traceback
 from email.message import EmailMessage
 from playwright.sync_api import sync_playwright
 
-EMAIL = os.environ["EMAIL"]
+EMAIL = os.environ.get("EMAIL", "")
 
 URL = "https://q.wildlifesanctuaryfca16.com/"
 TARGET_MONTH = "ธันวาคม 2569"
@@ -53,6 +53,7 @@ def send_email(subject, body):
         s.send_message(msg)
 
 
+status = []
 with sync_playwright() as p:
     browser = p.chromium.launch()
     page = browser.new_page()
@@ -61,6 +62,22 @@ with sync_playwright() as p:
         result = check(page)
     except Exception as e:
         result = f"error: {e}"
+        status.append(traceback.format_exc())
     line = f"[{now}] 6 ธ.ค. 69 -> {result}"
     print(line, flush=True)
+    status.insert(0, line)
+    try:
+        status.append("URL now: " + page.url)
+        status.append("PAGE TEXT:\n" + page.locator("body").inner_text()[:3000])
+    except Exception:
+        status.append("page text unavailable:\n" + traceback.format_exc())
+
+try:
     send_email(f"6 ธ.ค. 69: {result}", line + "\n\n" + URL)
+    status.insert(1, "email: sent")
+except Exception:
+    status.insert(1, "email: FAILED\n" + traceback.format_exc())
+
+# Written for debugging; the workflow pushes it to the "status" branch
+with open("status.txt", "w", encoding="utf-8") as f:
+    f.write("\n\n".join(status) + "\n")
