@@ -17,7 +17,7 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
-      - run: pip install playwright==1.48.0 && python -m playwright install --with-deps chromium
+      - run: pip install playwright==1.48.0
       - run: python check_dec6.py
         env:
           EMAIL: ${{ secrets.EMAIL }}

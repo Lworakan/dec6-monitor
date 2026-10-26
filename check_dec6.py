@@ -77,7 +77,7 @@ def send_email(subject, body):
 
 status = []
 with sync_playwright() as p:
-    browser = p.chromium.launch()
+    browser = p.chromium.launch(channel="chrome")  # Chrome preinstalled on the GitHub runner
     page = browser.new_page()
     page.set_default_timeout(10000)
     open("status.txt", "w").close()
