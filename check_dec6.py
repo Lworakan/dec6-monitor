@@ -24,12 +24,16 @@ def check(page):
     # Each step: tick checkboxes, scroll down, close any "ตกลง" popup, press "ถัดไป"
     page.get_by_text("ถัดไป", exact=True).first.wait_for(timeout=20000)
     for step in range(8):
-        note(f"wizard step {step}: " + page.locator("body").inner_text()[:200].replace("\n", " | "))
-        if page.get_by_text(re.compile(r"(มกราคม|กุมภาพันธ์|มีนาคม|เมษายน|พฤษภาคม|มิถุนายน|กรกฎาคม|สิงหาคม|กันยายน|ตุลาคม|พฤศจิกายน|ธันวาคม) 25\d\d")).count():
+        note(f"wizard step {step}: " + page.locator("body").inner_text()[-300:].replace("\n", " | "))
+        nav = page.get_by_role("button", name="›")
+        if nav.count() and nav.first.is_visible():
             break
-        for box in page.locator("input[type=checkbox]").all():
-            if box.is_visible() and not box.is_checked():
+        boxes = page.locator("input[type=checkbox]")
+        for box in boxes.all():
+            if not box.is_checked():
                 box.check(force=True)
+        if not boxes.count() and page.get_by_text("ฉันยอมรับข้อตกลง").count():
+            page.get_by_text("ฉันยอมรับข้อตกลง").first.click()
         page.mouse.wheel(0, 5000)
         page.wait_for_timeout(500)
         for name in ("ตกลง", "ยอมรับ", "OK"):
@@ -37,7 +41,9 @@ def check(page):
             if btn.count() and btn.first.is_visible():
                 btn.first.click()
                 page.wait_for_timeout(800)
-        page.get_by_text("ถัดไป", exact=True).last.click()
+        nxt = page.get_by_text("ถัดไป", exact=True).last
+        note(f"  checkboxes={boxes.count()} next_enabled={nxt.is_enabled()}")
+        nxt.click()
         page.wait_for_timeout(1500)
 
     # Click "›" until December 2569 shows
