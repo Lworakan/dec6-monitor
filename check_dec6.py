@@ -38,11 +38,12 @@ def check(page):
         page.mouse.wheel(0, 5000)
         page.wait_for_timeout(500)
         for name in ("ตกลง", "ยอมรับ", "OK"):
-            btn = page.get_by_role("button", name=name, exact=True)
-            if btn.count() and btn.first.is_visible():
+            btn = page.locator("button:visible").filter(has_text=re.compile(rf"^\s*{name}\s*$"))
+            if btn.count():
                 btn.first.click()
                 page.wait_for_timeout(800)
-        nxt = page.get_by_text("ถัดไป", exact=True).last
+        # each wizard step has its own (hidden) ถัดไป button; use the visible one
+        nxt = page.locator("button:visible").filter(has_text="ถัดไป").first
         note(f"  checkboxes={boxes.count()} next_enabled={nxt.is_enabled()}")
         nxt.click()
         page.wait_for_timeout(1500)
