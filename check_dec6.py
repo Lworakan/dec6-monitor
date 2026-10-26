@@ -15,7 +15,7 @@ CAPACITY = 100          # the bar shows "100 / เต็ม" when full, so 100 i
 
 def check(page):
     page.goto(URL, wait_until="networkidle")
-    page.get_by_text("1. ขอรหัสจองลงทะเบียน").first.click()
+    page.locator("button", has_text="ขอรหัสจอง").first.click(timeout=15000)
     page.wait_for_load_state("networkidle")
 
     # Click "›" until December 2569 shows
@@ -46,7 +46,7 @@ def check(page):
 def send_email(subject, body):
     msg = EmailMessage()
     msg["From"] = msg["To"] = EMAIL
-    msg["Subject"] = subject
+    msg["Subject"] = subject.splitlines()[0][:150]
     msg.set_content(body)
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as s:
         s.login(EMAIL, os.environ["GMAIL_APP_PASSWORD"])
