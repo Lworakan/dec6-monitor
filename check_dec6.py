@@ -1,5 +1,5 @@
-# Check how many places are left for 6 Dec 2569 (2026) every 15 minutes.
-# Runs once per call; GitHub Actions calls it every 15 minutes (.github/workflows/check.yml).
+# Check how many places are left for 6 Dec 2569 (2026) every hour.
+# Runs once per call; GitHub Actions calls it every hour (.github/workflows/check.yml).
 # Needs repo secrets EMAIL and GMAIL_APP_PASSWORD (https://myaccount.google.com/apppasswords).
 import os, re, datetime, smtplib, traceback
 from email.message import EmailMessage
@@ -15,8 +15,24 @@ CAPACITY = 100          # the bar shows "100 / เต็ม" when full, so 100 i
 
 def check(page):
     page.goto(URL, wait_until="networkidle")
-    page.locator("button", has_text="ขอรหัสจอง").first.click(timeout=15000)
-    page.wait_for_load_state("networkidle")
+    # Wizard: ข้อตกลง -> วิธีการลงทะเบียน -> เลือกวัน
+    # Each step: tick checkboxes, scroll down, close any "ตกลง" popup, press "ถัดไป"
+    page.get_by_text("ถัดไป", exact=True).first.wait_for(timeout=20000)
+    for _ in range(8):
+        if page.get_by_text(re.compile(r"(มกราคม|กุมภาพันธ์|มีนาคม|เมษายน|พฤษภาคม|มิถุนายน|กรกฎาคม|สิงหาคม|กันยายน|ตุลาคม|พฤศจิกายน|ธันวาคม) 25\d\d")).count():
+            break
+        for box in page.locator("input[type=checkbox]").all():
+            if box.is_visible() and not box.is_checked():
+                box.check(force=True)
+        page.mouse.wheel(0, 5000)
+        page.wait_for_timeout(500)
+        for name in ("ตกลง", "ยอมรับ", "OK"):
+            btn = page.get_by_role("button", name=name, exact=True)
+            if btn.count() and btn.first.is_visible():
+                btn.first.click()
+                page.wait_for_timeout(800)
+        page.get_by_text("ถัดไป", exact=True).last.click()
+        page.wait_for_timeout(1500)
 
     # Click "›" until December 2569 shows
     for _ in range(24):
