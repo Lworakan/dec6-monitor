@@ -30,7 +30,8 @@ def check(page):
             break
         boxes = page.locator("input[type=checkbox]")
         for box in boxes.all():
-            if not box.is_checked():
+            # later wizard steps are already in the page but hidden
+            if box.is_visible() and not box.is_checked():
                 box.check(force=True)
         if not boxes.count() and page.get_by_text("ฉันยอมรับข้อตกลง").count():
             page.get_by_text("ฉันยอมรับข้อตกลง").first.click()
