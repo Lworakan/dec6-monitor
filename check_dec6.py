@@ -13,12 +13,18 @@ TARGET_DAY = "6"
 CAPACITY = 100          # the bar shows "100 / เต็ม" when full, so 100 is assumed to be the max
 
 
+def note(msg):
+    with open("status.txt", "a", encoding="utf-8") as f:
+        f.write(msg + "\n")
+
+
 def check(page):
     page.goto(URL, wait_until="networkidle")
     # Wizard: ข้อตกลง -> วิธีการลงทะเบียน -> เลือกวัน
     # Each step: tick checkboxes, scroll down, close any "ตกลง" popup, press "ถัดไป"
     page.get_by_text("ถัดไป", exact=True).first.wait_for(timeout=20000)
-    for _ in range(8):
+    for step in range(8):
+        note(f"wizard step {step}: " + page.locator("body").inner_text()[:200].replace("\n", " | "))
         if page.get_by_text(re.compile(r"(มกราคม|กุมภาพันธ์|มีนาคม|เมษายน|พฤษภาคม|มิถุนายน|กรกฎาคม|สิงหาคม|กันยายน|ตุลาคม|พฤศจิกายน|ธันวาคม) 25\d\d")).count():
             break
         for box in page.locator("input[type=checkbox]").all():
@@ -73,6 +79,8 @@ status = []
 with sync_playwright() as p:
     browser = p.chromium.launch()
     page = browser.new_page()
+    page.set_default_timeout(10000)
+    open("status.txt", "w").close()
     now = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=7))).strftime("%Y-%m-%d %H:%M")
     try:
         result = check(page)
@@ -95,5 +103,5 @@ except Exception:
     status.insert(1, "email: FAILED\n" + traceback.format_exc())
 
 # Written for debugging; the workflow pushes it to the "status" branch
-with open("status.txt", "w", encoding="utf-8") as f:
+with open("status.txt", "a", encoding="utf-8") as f:
     f.write("\n\n".join(status) + "\n")
