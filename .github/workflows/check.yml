@@ -8,10 +8,15 @@ on:
 permissions:
   contents: write
 
+# A new hourly run replaces the previous one if it is still going
+concurrency:
+  group: check
+  cancel-in-progress: true
+
 jobs:
   check:
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 65
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
