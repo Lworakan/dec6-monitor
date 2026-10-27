@@ -1,0 +1,28 @@
+name: Inspect site data (one-off)
+
+on:
+  push:
+    branches: [inspect]
+
+permissions:
+  contents: write
+
+jobs:
+  inspect:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: pip install playwright==1.48.0
+      - run: python inspect_site.py
+      - name: Save inspect.txt to the inspect-result branch
+        if: always()
+        run: |
+          [ -f inspect.txt ] || echo "inspect.txt missing: script crashed" > inspect.txt
+          mkdir /tmp/s && cp inspect.txt /tmp/s/ && cd /tmp/s
+          git init -q -b inspect-result && git add inspect.txt
+          git -c user.name=actions -c user.email=actions@github.com commit -qm "inspect $(date -u +%FT%TZ)"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" inspect-result
