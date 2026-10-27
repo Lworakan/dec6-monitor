@@ -1,11 +1,9 @@
 name: Check 6 Dec availability
 
 on:
-  schedule:
-    - cron: "7 * * * *"
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [main, tick]  # tick is pushed hourly by a Claude scheduled task
 
 permissions:
   contents: write

@@ -1,5 +1,5 @@
 # Check how many places are left for 6 Dec 2569 (2026) every hour.
-# Runs once per call; GitHub Actions calls it every hour (.github/workflows/check.yml).
+# Runs once per call; GitHub Actions runs it on each push to the tick branch (hourly).
 # Needs repo secrets EMAIL and GMAIL_APP_PASSWORD (https://myaccount.google.com/apppasswords).
 import os, re, datetime, smtplib, traceback
 from email.message import EmailMessage
