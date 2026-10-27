@@ -1,0 +1,104 @@
+check() -> จองแล้ว 100 | ว่าง 0 ที่ | สถานะ: เต็ม
+
+=== NETWORK ===
+GET 200 https://q.wildlifesanctuaryfca16.com/  [text/html; charset=utf-8]
+
+GET 200 https://q.wildlifesanctuaryfca16.com/q-chiangdao/_next/static/chunks/webpack-4eddbea25b1ca830.js  [application/javascript; charset=UTF-8]
+
+GET 200 https://q.wildlifesanctuaryfca16.com/q-chiangdao/_next/static/chunks/main-app-2ecc3bf42ae2d122.js  [application/javascript; charset=UTF-8]
+
+GET 200 https://q.wildlifesanctuaryfca16.com/q-chiangdao/_next/static/chunks/288-fa94284615ce1902.js  [application/javascript; charset=UTF-8]
+
+GET 200 https://q.wildlifesanctuaryfca16.com/q-chiangdao/_next/static/chunks/app/layout-e583ab9b6d49a7b0.js  [application/javascript; charset=UTF-8]
+
+GET 200 https://q.wildlifesanctuaryfca16.com/q-chiangdao/_next/static/chunks/255-b1e2483a7e02feee.js  [application/javascript; charset=UTF-8]
+
+GET 200 https://q.wildlifesanctuaryfca16.com/q-chiangdao/_next/static/chunks/4bd1b696-c023c6e3521b1417.js  [application/javascript; charset=UTF-8]
+
+GET 200 https://q.wildlifesanctuaryfca16.com/q-chiangdao/_next/static/chunks/76849d38-19930fc1171c6707.js  [application/javascript; charset=UTF-8]
+
+GET 200 https://q.wildlifesanctuaryfca16.com/q-chiangdao/_next/static/chunks/app/page-afdd9eeb8619471b.js  [application/javascript; charset=UTF-8]
+
+GET 200 https://q.wildlifesanctuaryfca16.com/q-chiangdao/_next/static/chunks/651-ca5b0d911762c581.js  [application/javascript; charset=UTF-8]
+
+GET 200 https://wildlifesanctuaryfca16.com/api/chiangdao/open  [application/json; charset=utf-8]
+  JSON: {
+ "status": "success",
+ "message": "<str len 22>",
+ "data": {
+  "open": true,
+  "time_open": "26/10/2026 08:00:00",
+  "time_close": "30/10/2026 16:00:00",
+  "now": "27/10/2026 07:23:12",
+  "q": {
+   "message": "",
+   "open": true,
+   "time_open": "25/10/2026 08:00:00",
+   "time_close": "30/10/2026 16:00:00"
+  }
+ }
+}
+
+GET 200 https://q.wildlifesanctuaryfca16.com/chiangdao/%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%B2%E0%B8%A8%E0%B9%80%E0%B8%9B%E0%B8%B4%E0%B8%94%E0%B8%94%E0%B8%AD%E0%B8%A2%E0%B8%AB%E0%B8%A5%E0%B8%A7%E0%B8%87  [image/png]
+
+GET 200 https://q.wildlifesanctuaryfca16.com/chiangdao/%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%B2%E0%B8%A8%E0%B9%80%E0%B8%9B%E0%B8%B4%E0%B8%94%E0%B8%94%E0%B8%AD%E0%B8%A2%E0%B8%AB%E0%B8%A5%E0%B8%A7%E0%B8%87  [image/png]
+
+GET 200 https://q.wildlifesanctuaryfca16.com/chiangdao/%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%B2%E0%B8%A8%E0%B9%80%E0%B8%9B%E0%B8%B4%E0%B8%94%E0%B8%94%E0%B8%AD%E0%B8%A2%E0%B8%AB%E0%B8%A5%E0%B8%A7%E0%B8%87  [image/png]
+
+GET 200 https://q.wildlifesanctuaryfca16.com/chiangdao/%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%B2%E0%B8%A8%E0%B9%80%E0%B8%9B%E0%B8%B4%E0%B8%94%E0%B8%94%E0%B8%AD%E0%B8%A2%E0%B8%AB%E0%B8%A5%E0%B8%A7%E0%B8%87  [image/png]
+
+GET 200 https://q.wildlifesanctuaryfca16.com/api/v1/bookings/availability?date=2026-12-06  [application/json]
+  JSON: {
+ "success": true,
+ "data": {
+  "date": "2026-12-06",
+  "capacity": 100,
+  "available": 0
+ },
+ "meta": null
+}
+
+=== JS SNIPPETS ===
+layout-e583ab9b6d49a7b0.js @3074:  10: รบกวนระบบจนทำงานผิดปกติโดยมิชอบ\nจำคุกไม่เกิน 5 ปี / ปรับไม่เกิน 100,000 บาท","color:#fca5a5;font-size:13px;line-height:1.8;"),console.log("%c\uD83D\uDC9Aอย่าทำอะไรที่ไม่มีสิทธิ์นะ","color:#4ade80;font-size:16px;font-weight:bold;"),console.log("%cด้วยความปรารถนาดีจาก Developer ที่ยังอยากนอนหลับเต็มอิ่ม \uD83D\uDCA4","color:#94a3b8;font-size:12px;font-style:italic;")},[]),null}},9125:e=>{e.exports={style:{fontFamily:"'Inter', 'Inter Fallback'",fontStyle:"normal"},className:"__className_0c71a0"}},9408:(e,t,a)=>{"use strict";a.d(t,{Ay:()=>i,_x:()=>o,hh:()=>n,pr:()=>r});let l=(0,a(3404).Z0)({
+
+---
+4bd1b696-c023c6e3521b1417.js @13993: flexNegative flexOrder gridArea gridRow gridRowEnd gridRowSpan gridRowStart gridColumn gridColumnEnd gridColumnSpan gridColumnStart fontWeight lineClamp lineHeight opacity order orphans scale tabSize widows zIndex zoom fillOpacity floodOpacity stopOpacity strokeDasharray strokeDashoffset strokeMiterlimit strokeOpacity strokeWidth MozAnimationIterationCount MozBoxFlex MozBoxFlexGroup MozLineClamp msAnimationIterationCount msFlex msZoom msFlexGrow msFlexNegative msFlexOrder msFlexPositive msFlexShrink msGridColumn msGridColumnSpan msGridRow msGridRowSpan WebkitAnimationIterationCount WebkitBoxFl
+
+---
+4bd1b696-c023c6e3521b1417.js @17212: ["stopOpacity","stop-opacity"],["strikethroughPosition","strikethrough-position"],["strikethroughThickness","strikethrough-thickness"],["strokeDasharray","stroke-dasharray"],["strokeDashoffset","stroke-dashoffset"],["strokeLinecap","stroke-linecap"],["strokeLinejoin","stroke-linejoin"],["strokeMiterlimit","stroke-miterlimit"],["strokeOpacity","stroke-opacity"],["strokeWidth","stroke-width"],["textAnchor","text-anchor"],["textDecoration","text-decoration"],["textRendering","text-rendering"],["transformOrigin","transform-origin"],["underlinePosition","underline-position"],["underlineThickness","
+
+---
+4bd1b696-c023c6e3521b1417.js @17232: -opacity"],["strikethroughPosition","strikethrough-position"],["strikethroughThickness","strikethrough-thickness"],["strokeDasharray","stroke-dasharray"],["strokeDashoffset","stroke-dashoffset"],["strokeLinecap","stroke-linecap"],["strokeLinejoin","stroke-linejoin"],["strokeMiterlimit","stroke-miterlimit"],["strokeOpacity","stroke-opacity"],["strokeWidth","stroke-width"],["textAnchor","text-anchor"],["textDecoration","text-decoration"],["textRendering","text-rendering"],["transformOrigin","transform-origin"],["underlinePosition","underline-position"],["underlineThickness","underline-thickness"
+
+---
+76849d38-19930fc1171c6707.js @36307: null)};e.forEach(e=>{if(!n){if(e.aborted)return void o.call(e);e.addEventListener("abort",o,{once:!0})}});let{signal:a}=r;return a.unsubscribe=()=>Z.asap(s),a})([c,d&&d.toAbortSignal()],y),x=null,U=N&&N.unsubscribe&&(()=>{N.unsubscribe()}),D=null,L=()=>new eh("Request body larger than maxBodyLength limit",eh.ERR_BAD_REQUEST,e,x);try{let i,c=(t=>Z.hasOwnProp(e,t)?e[t]:void 0)("auth");if(c){let e=Z.getSafeProp(c,"username")||"",t=Z.getSafeProp(c,"password")||"";i={username:e,password:t}}if((e=>{let t=e.indexOf("://"),r=e;return -1!==t&&(r=r.slice(t+3)),r.includes("@")||r.includes(":")})(r)){let 
+
+---
+page-afdd9eeb8619471b.js @3747: re their passport number.","Step2_2_4":"","Step2_2_5":"","Step2_3":"- Select your nature trek date. Visits are available from November 16, 2026 to February 13, 2027 (February 13 is the descent day).","Step2_3_1":"Note: ","Step2_3_2":"- Wednesday-night bookings are not permitted. Overnight stays are limited to one night, with a maximum of 100 participants per day. Plan to arrive one day before your trek to attend training.","Step2_3_3":"","Step2_3_4":"","Step2_3_5":"","Step2_4":"- Enter your personal information: title, first name, last name, phone number, national ID number, and date of birth.
+
+---
+page-afdd9eeb8619471b.js @4495:  equipment).","Step2_6":"- Enter your email address to confirm your booking. Read all details and conditions before confirming. Once confirmed, the trek date and participant names cannot be changed, and no booking fees will be refunded. Please do not access the booking system again after completing payment.","Step2_6_1":"","Step2_6_2":"","Step2_6_3":"","Step2_6_4":"","Step2_7":"- Complete payment within the specified period (within 6 hours of completing your booking).","Step2_7_1":"- After payment, check your booking and payment status under \\"Check status\\" on the website.","Step2_7_2":"- D
+
+---
+page-afdd9eeb8619471b.js @4587: s and conditions before confirming. Once confirmed, the trek date and participant names cannot be changed, and no booking fees will be refunded. Please do not access the booking system again after completing payment.","Step2_6_1":"","Step2_6_2":"","Step2_6_3":"","Step2_6_4":"","Step2_7":"- Complete payment within the specified period (within 6 hours of completing your booking).","Step2_7_1":"- After payment, check your booking and payment status under \\"Check status\\" on the website.","Step2_7_2":"- Download the sanctuary entry permit application from the website under \\"Related documents\\
+
+---
+page-afdd9eeb8619471b.js @4690: ed, and no booking fees will be refunded. Please do not access the booking system again after completing payment.","Step2_6_1":"","Step2_6_2":"","Step2_6_3":"","Step2_6_4":"","Step2_7":"- Complete payment within the specified period (within 6 hours of completing your booking).","Step2_7_1":"- After payment, check your booking and payment status under \\"Check status\\" on the website.","Step2_7_2":"- Download the sanctuary entry permit application from the website under \\"Related documents\\", complete it, and bring it on the day of your trek.","Step2_7_3":"- All participants visiting Doi Lua
+
+---
+page-afdd9eeb8619471b.js @4722: refunded. Please do not access the booking system again after completing payment.","Step2_6_1":"","Step2_6_2":"","Step2_6_3":"","Step2_6_4":"","Step2_7":"- Complete payment within the specified period (within 6 hours of completing your booking).","Step2_7_1":"- After payment, check your booking and payment status under \\"Check status\\" on the website.","Step2_7_2":"- Download the sanctuary entry permit application from the website under \\"Related documents\\", complete it, and bring it on the day of your trek.","Step2_7_3":"- All participants visiting Doi Luang Chiang Dao in 2026 must downl
+
+---
+page-afdd9eeb8619471b.js @6016: fied date and time will result in forfeiture of your trek booking. The sanctuary will deny entry and will not refund any booking fees.","chiandao_open":"Bookings open at 8:00 AM on October 26, 2026.","chiandao_close":"Registration is now closed. You can still check your registration status and make payment as usual.","IUnderstand":"I understand","SelectdateexploreNatureStudy":"Select your nature trek date","SelectdateNote":"- Wednesday-night bookings are not permitted. Plan to arrive one day before your trek to attend training.","SelectdateConfirm":"You must plan to arrive one day before your 
+
+---
+page-afdd9eeb8619471b.js @10944: osit refund.","service17":"Tent (if bringing your own)","service18":"Waste management fee","ค่าจัดการสิ่งปฏิกูล":"Waste management fee","noteSum":"This price does not include fees for bringing your own tent. Please bring enough money on the day of your visit.","noteStep5":"* Note: The sanctuary has limited rental equipment, including tents, sleeping bags, and other camping gear. If you cannot reserve equipment from the sanctuary, you must bring your own. No spare equipment is available to borrow.","ReservationConfirmation":"Confirm booking","ReservationConfirmationNote":"Fees payable at Chiang
+
+---
+page-afdd9eeb8619471b.js @14479: issues, please contact the administrator at 053-456623 / 063-6515181. *","Createdatebill":"Bill creation date","Payday":"Payment due by","Dateattendtraining":"Training date","TrainingTime":"Training time","numbertourists":"Number of visitors","Starttrip":"Trek start date","Endtrip":"Trek end date","paid":"Paid","PleaseDownload":"Please download the documents required for your trek.","DownloadDocument":"Download trek documents","DetailBTN":"View details","ReportBTN":"Report an issue * For incorrect personal details or changes to uploaded files only. *","Home":"Home","WarningDocument":"Payment i
+
+---
+page-afdd9eeb8619471b.js @15129: try permit application.","DownloadAnnouncement":"PDF Announcement: Opening of Doi Luang (Seasons 69) (Thai)","DownloadEnter":"Download entry permit application (Thai)","EXDownloadEnter":"Sample completed entry permit application","PaymentStatus":"Payment status","Canceled":"Canceled","NotPaid":"Not paid","Paid":"Paid","Pay":"Pay","CheckInformation":"Check information","ApplicationForm":"Entry permit application","SendDocuments":"Submit documents","DocumentsHaveNotSent":"Documents not yet submitted","TotalCost":"Total cost","Form":"Sanctuary entry permit application","NumberRegistrants":"Number
+
+---
+page-afdd9eeb8619471b.js @18259:  conditions carefully before booking","rule2":"Prepare all required information before booking","rule3":"Book through the website","rule4":"Select a date and complete all information","rule5":"Select the services and equipment you need","rule6":"Confirm booking","rule7":"Check your details and make payment","rule8":"Prepare for training","PleaseSelect7_1":"You must select either tent rental from the sanctuary (Item 7, Section 1) or a camping pitch for your own tent (Item 4, Section 1).","omkoi_open":"Booking opens at 8:00 AM on November 3, 2025.","omkoi_Announcement":"Omkoi Wildlife Sanctuary 
