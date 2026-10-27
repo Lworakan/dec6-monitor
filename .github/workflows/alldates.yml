@@ -1,0 +1,28 @@
+name: All dates availability (one-off)
+
+on:
+  push:
+    branches: [alldates]
+
+permissions:
+  contents: write
+
+jobs:
+  alldates:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: pip install playwright==1.48.0
+      - run: python all_dates.py
+      - name: Save all_dates.txt to the alldates-result branch
+        if: always()
+        run: |
+          [ -f all_dates.txt ] || echo "all_dates.txt missing: script crashed" > all_dates.txt
+          mkdir /tmp/s && cp all_dates.txt /tmp/s/ && cd /tmp/s
+          git init -q -b alldates-result && git add all_dates.txt
+          git -c user.name=actions -c user.email=actions@github.com commit -qm "alldates $(date -u +%FT%TZ)"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" alldates-result
