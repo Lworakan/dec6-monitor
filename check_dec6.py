@@ -54,7 +54,11 @@ last_mailed = None
 with sync_playwright() as p:
     browser = p.chromium.launch(channel="chrome")  # Chrome preinstalled on the GitHub runner
     page = browser.new_page()
-    page.goto(URL, wait_until="networkidle")
+    try:
+        page.goto(URL, wait_until="networkidle")
+    except Exception:
+        # The API call below works without the page; don't lose the hour over a slow load
+        note(f"[{now():%Y-%m-%d %H:%M}] page load failed (continuing):\n" + traceback.format_exc(limit=1))
     first = True
     while True:
         t = now()
